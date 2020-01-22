@@ -65,15 +65,23 @@ nav {
          padding: 1.5em 0;
          transition: color .5s;
          font-weight: 500;
+         cursor: pointer;
 
          &:hover {
             color: #C18A5E;
          }
       }
+
    }
 
    .icons {
       margin-top: auto;
+
+      .icon {
+         &:hover svg {
+            filter: sepia(100%) saturate(50%);
+         }
+      }
 
       svg {
          display: block;
@@ -81,9 +89,6 @@ nav {
          padding: 1em 0;
          transition: filter .2s;
 
-         &:hover {
-            filter: sepia(100%) saturate(50%);
-         }
       }
    }
 }
@@ -102,11 +107,24 @@ nav {
    top: 2em;
 }
 
+@media only screen and (max-width: 768px) {
+   .shop-drawer {
+      max-height: 0;
+      transition: max-height .2s;
+      overflow: hidden;
+
+      &.openMobile {
+         max-height: 132.8px;
+      }
+   }
+}
+
 @media only screen and (min-width: 768px) {
    nav {
       width: 100%;
       left: 0;
       right: 0;
+      transform: translateX(0) !important;
       padding: 0 3em;
       height: auto;
       flex-direction: row;
@@ -125,7 +143,7 @@ nav {
          display: block;
       }
 
-      ul,
+      ul:not(.shop-drawer),
       .icons {
          display: flex;
          align-items: center;
@@ -145,6 +163,30 @@ nav {
       ul {
          a {
             padding: 1em 2em;
+         }
+
+         .shop-drawer {
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .2s;
+            border: 1px solid #EEEFF1;
+            height: auto;
+            max-height: auto;
+
+            a {
+               transition: all .2s;
+
+               &:hover {
+                  background-color: #C18A5E;
+                  color: #fff;
+               }
+            }
+
+            &.openDesktop {
+               opacity: 1;
+               visibility: visible;
+            }
          }
       }
 

@@ -7,16 +7,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'oldwoods'
-  open = false
+  openNav = false
+  openShopDrawerDesktop = false
+  openShopDrawerMobile = false
 
   toggleNav() {
-    this.open = !this.open
+    this.openNav = !this.openNav
     document.body.classList.toggle('hide-overflow')
   }
 
   closeNav() {
-    this.open = false
+    this.openNav = false
     document.body.classList.remove('hide-overflow')
+  }
+
+  toggleShopDrawerDesktop($event) {
+    console.log($event.type)
+    this.openShopDrawerDesktop = $event.type == 'mouseover';
+  }
+
+  toggleShopDrawerMobile() {
+    console.log('click')
+    this.openShopDrawerMobile = !this.openShopDrawerMobile;
   }
 
 }
