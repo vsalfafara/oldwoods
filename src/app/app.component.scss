@@ -1,0 +1,169 @@
+.overlay {
+   position: fixed;
+   background-color: rgba(255, 255, 255, 0.5);
+   height: 100%;
+   width: 100%;
+   top: 0;
+   left: 0;
+   z-index: 2;
+   opacity: 0;
+   visibility: hidden;
+   transition: opacity visibility .2s;
+}
+
+nav {
+   width: 120px;
+   height: 100vh;
+   border-right: 1px solid #E9EAED;
+   display: flex;
+   flex-direction: column;
+   position: fixed;
+   left: -120px;
+   z-index: 3;
+   background-color: #fff;
+   transition: transform .2s;
+
+   &.open {
+      transform: translateX(120px);
+
+      +.overlay {
+         opacity: 1;
+         visibility: visible;
+      }
+   }
+
+   .desktop {
+      display: none;
+   }
+
+   .mobile {
+      margin-bottom: 2em;
+   }
+
+   .logo {
+      height: auto;
+      width: 100%;
+      justify-self: flex-start;
+
+      img {
+         height: auto;
+         width: 100%;
+      }
+   }
+
+   ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: 'Quicksand', sans-serif;
+
+      a {
+         text-align: center;
+         text-decoration: none;
+         color: #707070;
+         display: block;
+         padding: 1.5em 0;
+         transition: color .5s;
+         font-weight: 500;
+
+         &:hover {
+            color: #C18A5E;
+         }
+      }
+   }
+
+   .icons {
+      margin-top: auto;
+
+      svg {
+         display: block;
+         margin: auto;
+         padding: 1em 0;
+         transition: filter .2s;
+
+         &:hover {
+            filter: sepia(100%) saturate(50%);
+         }
+      }
+   }
+}
+
+.main-container {
+   padding: 0 2em;
+   min-height: 100%;
+   display: block;
+   position: relative;
+}
+
+.hamburger {
+   cursor: pointer;
+   position: fixed;
+   left: 2em;
+   top: 2em;
+}
+
+@media only screen and (min-width: 768px) {
+   nav {
+      width: 100%;
+      left: 0;
+      right: 0;
+      padding: 0 3em;
+      height: auto;
+      flex-direction: row;
+      justify-content: space-between;
+      position: fixed;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      box-sizing: border-box;
+
+      .mobile {
+         display: none;
+      }
+
+      .desktop {
+         display: block;
+      }
+
+      ul,
+      .icons {
+         display: flex;
+         align-items: center;
+      }
+
+      .logo {
+         height: auto;
+         width: 200px;
+         align-items: center;
+
+         img {
+            height: auto;
+            width: 100%;
+         }
+      }
+
+      ul {
+         a {
+            padding: 1em 2em;
+         }
+      }
+
+      .icons {
+         position: absolute;
+         padding-right: inherit;
+         right: 0;
+
+         .icon {
+            padding: 1em;
+
+            svg {
+               padding: 0;
+            }
+         }
+      }
+   }
+
+   .hamburger {
+      display: none;
+   }
+}

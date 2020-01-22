@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'oldwoods';
+  title = 'oldwoods'
+  open = false
+
+  toggleNav() {
+    this.open = !this.open
+    document.body.classList.toggle('hide-overflow')
+  }
+
+  closeNav() {
+    this.open = false
+    document.body.classList.remove('hide-overflow')
+  }
+
 }

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="Group_356" data-name="Group 356" transform="translate(-45 -677)">
+    <g id="outline-local_grocery_store-24px" transform="translate(45 677)">
+      <g id="Bounding_Boxes">
+        <path id="Path_3249" data-name="Path 3249" d="M0,0H30V30H0Z" fill="none"/>
+      </g>
+      <g id="Outline" transform="translate(1 2)">
+        <g id="Group_316" data-name="Group 316">
+          <path id="Path_3250" data-name="Path 3250" d="M7,18a2,2,0,1,0,2,2A2,2,0,0,0,7,18Z" transform="translate(0.502 4)" fill="#707070"/>
+          <path id="Path_3251" data-name="Path 3251" d="M17,18a2,2,0,1,0,2,2A2,2,0,0,0,17,18Z" transform="translate(5 4)" fill="#707070"/>
+        </g>
+      </g>
+    </g>
+    <path id="Path_3252" data-name="Path 3252" d="M19.913,17.4a2.565,2.565,0,0,0,2.275-1.442l4.654-9.086A1.4,1.4,0,0,0,25.711,4.8H6.473L5.251,2H1V4.8H3.6l4.68,10.626L6.525,18.842A2.808,2.808,0,0,0,8.8,23H24.4V20.2H8.8l1.43-2.8ZM7.707,7.6H23.5l-3.588,7H10.788Z" transform="translate(45 677)" fill="#707070"/>
+  </g>
+</svg>
