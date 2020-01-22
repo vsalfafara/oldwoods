@@ -8,7 +8,7 @@
    z-index: 2;
    opacity: 0;
    visibility: hidden;
-   transition: opacity visibility .2s;
+   transition: .2s;
 }
 
 nav {
@@ -98,6 +98,7 @@ nav {
    min-height: 100%;
    display: block;
    position: relative;
+   background-color: rgb(99, 240, 240);
 }
 
 .hamburger {
