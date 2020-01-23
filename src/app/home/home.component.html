@@ -1,3 +1,76 @@
 <main>
-
+   <div class="container">
+      <div class="carousel-mobile">
+         <div class="item first-item" [class.hide]='items[1]'>
+            <div class="header">
+               <div class="box"></div>
+               <div class="heading">
+                  <h1>10% DISCOUNT</h1>
+                  <p>first 100 customers</p>
+                  <p>macbook wood skins</p>
+               </div>
+               <div class="carousel-navigation right" (click)="change(1)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32.185" height="8" viewBox="0 0 32.185 8">
+                     <path id="Path_543" data-name="Path 543" d="M35.185,12,28.409,8v3H3v2H28.409v3Z"
+                        transform="translate(-3 -8)" fill="#707070" />
+                  </svg>
+               </div>
+               <div class="box"></div>
+            </div>
+            <p class="first-item-p">Exclusive distributor of WoodWe in the Philippines Proud partner of Haribon
+               Foundation
+            </p>
+            <div class="first-item-image">
+               <img src="assets/images/carousel-laptop-1.png" alt="">
+            </div>
+         </div>
+         <!-- <div class="item second-item" [class.hide]='items[2]'>
+            <div class="header">
+               <div class="box"></div>
+               <div class="heading">
+                  <h1>MACBOOK WOOD SKIN</h1>
+               </div>
+               <div class="carousel-navigation right" (click)="change(1)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32.185" height="8" viewBox="0 0 32.185 8">
+                     <path id="Path_543" data-name="Path 543" d="M35.185,12,28.409,8v3H3v2H28.409v3Z"
+                        transform="translate(-3 -8)" fill="#707070" />
+                  </svg>
+               </div>
+               <div class="box"></div>
+            </div>
+            <p class="first-item-p">Exclusive distributor of WoodWe in the Philippines Proud partner of Haribon
+               Foundation
+            </p>
+            <div class="first-item-image">
+               <img src="assets/images/carousel-laptop-1.png" alt="">
+            </div>
+         </div> -->
+      </div>
+      <div class="products-container">
+         <p>our products</p>
+         <div class="products">
+            <div class="product">
+               <div class="product-img">
+                  <img src="assets/images/product-1.png" alt="">
+               </div>
+               <p class="margin-top">macbook</p>
+               <p>walnut skin</p>
+            </div>
+            <div class="product">
+               <div class="product-img">
+                  <img src="assets/images/product-2.png" alt="">
+               </div>
+               <p class="margin-top">iphone</p>
+               <p>walnut hard case</p>
+            </div>
+            <div class="product">
+               <div class="product-img">
+                  <img src="assets/images/product-3.png" alt="">
+               </div>
+               <p class="margin-top">macbook</p>
+               <p>bamboo skin</p>
+            </div>
+         </div>
+      </div>
+   </div>
 </main>

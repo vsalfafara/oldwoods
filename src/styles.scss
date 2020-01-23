@@ -5,8 +5,16 @@
 html,
 body {
    height: 100%;
+   overflow-x: hidden;
 }
 
 body.hide-overflow {
    overflow: hidden;
+}
+
+.container {
+   padding: 0 2em;
+   height: inherit;
+   width: inherit;
+   box-sizing: border-box;
 }

@@ -5,7 +5,7 @@
    width: 100%;
    top: 0;
    left: 0;
-   z-index: 2;
+   z-index: 10;
    opacity: 0;
    visibility: hidden;
    transition: .2s;
@@ -16,10 +16,11 @@ nav {
    height: 100vh;
    border-right: 1px solid #E9EAED;
    display: flex;
+   top: 0;
    flex-direction: column;
    position: fixed;
    left: -120px;
-   z-index: 3;
+   z-index: 11;
    background-color: #fff;
    transition: transform .2s;
 
@@ -93,18 +94,25 @@ nav {
    }
 }
 
-.main-container {
-   padding: 0 2em;
-   min-height: 100%;
-   display: block;
-   position: relative;
-}
-
 .hamburger {
    cursor: pointer;
    position: fixed;
    left: 2em;
    top: 2em;
+   z-index: 9;
+}
+
+footer {
+   font-family: 'Quicksand', sans-serif;
+   margin-top: 5em;
+   background-color: #EEEFF1;
+   color: #707070;
+   padding: 2em;
+
+   .header {
+      font-weight: bold;
+   }
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -125,7 +133,7 @@ nav {
       left: 0;
       right: 0;
       transform: translateX(0) !important;
-      padding: 0 3em;
+      padding: 0 1em;
       height: auto;
       flex-direction: row;
       justify-content: space-between;
@@ -162,7 +170,7 @@ nav {
 
       ul {
          a {
-            padding: 1em 2em;
+            padding: .5em 1em;
          }
 
          .shop-drawer {
@@ -171,6 +179,7 @@ nav {
             visibility: hidden;
             transition: opacity .2s;
             border: 1px solid #EEEFF1;
+            background-color: #fff;
             height: auto;
             max-height: auto;
 
@@ -196,7 +205,7 @@ nav {
          right: 0;
 
          .icon {
-            padding: 1em;
+            padding: .5em;
 
             svg {
                padding: 0;
@@ -207,5 +216,32 @@ nav {
 
    .hamburger {
       display: none;
+   }
+
+   footer {
+      display: flex;
+      justify-content: center;
+
+      div {
+         padding: 0 4em;
+      }
+   }
+}
+
+@media only screen and (min-width: 1024px) {
+   nav {
+      padding: 0 3em;
+
+      ul {
+         a {
+            padding: 1em 2em;
+         }
+      }
+
+      .icons {
+         .icon {
+            padding: 1em;
+         }
+      }
    }
 }

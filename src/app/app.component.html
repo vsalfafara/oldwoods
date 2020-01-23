@@ -8,7 +8,7 @@
     <li><a routerLink="">HOME</a></li>
     <li><a routerLink="">ABOUT</a></li>
     <li class="desktop">
-      <a routerLink="home">
+      <a routerLink="">
         <div class="logo">
           <img src="assets/images/LOGO.png" alt="">
         </div>
@@ -58,12 +58,30 @@
   </div>
 </nav>
 <div class="overlay" (click)="closeNav()"></div>
-<div class="main-container">
-  <div class="hamburger" (click)="toggleNav()">
-    <svg id="baseline-notes-24px" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path id="Path_1323" data-name="Path 1323" d="M3,18H15V16H3ZM3,6V8H21V6Zm0,7H21V11H3Z" fill="#707070" />
-      <path id="Path_1324" data-name="Path 1324" d="M0,0H24V24H0Z" fill="none" />
-    </svg>
-  </div>
-  <router-outlet></router-outlet>
+<div class="hamburger" (click)="toggleNav()">
+  <svg id="baseline-notes-24px" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path id="Path_1323" data-name="Path 1323" d="M3,18H15V16H3ZM3,6V8H21V6Zm0,7H21V11H3Z" fill="#707070" />
+    <path id="Path_1324" data-name="Path 1324" d="M0,0H24V24H0Z" fill="none" />
+  </svg>
 </div>
+<router-outlet></router-outlet>
+<footer>
+  <div>
+    <p class="header">details</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex tempore similique mollitia aspernatur repudiandae
+      earum molestiae asperiores, hic nam architecto?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex tempore similique mollitia aspernatur repudiandae
+      earum molestiae asperiores, hic nam architecto?</p>
+  </div>
+  <div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex tempore similique mollitia aspernatur repudiandae
+      earum molestiae asperiores, hic nam architecto?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex tempore similique mollitia aspernatur repudiandae
+      earum molestiae asperiores, hic nam architecto?</p>
+  </div>
+  <div>
+    <p class="header">material</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex tempore similique mollitia aspernatur repudiandae
+      earum molestiae asperiores, hic nam architecto?</p>
+  </div>
+</footer>
