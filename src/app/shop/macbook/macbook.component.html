@@ -1,0 +1,39 @@
+<div class="container">
+   <div class="heading">
+      <h1>Walnut</h1>
+      <p class="category">Macbook Wood Skin</p>
+      <p class="price">PHP 3,500</p>
+   </div>
+   <div class="product-image">
+      <img src="../../../assets/images/{{woodType}}" alt="">
+   </div>
+   <div class="menu">
+      <div class="wood-type">
+         <p>Wood Type</p>
+         <div class="types">
+            <div class="form-control">
+               <input type="radio" name="type" (click)="changeWoodType('product-1.png')">
+               <img src="../../../assets/icons/wood-type-1.svg" alt="">
+            </div>
+            <div class="form-control">
+               <input type="radio" name="type" (click)="changeWoodType('product-3.png')">
+               <img src="../../../assets/icons/wood-type-2.svg" alt="">
+            </div>
+         </div>
+      </div>
+      <div class="model">
+         <select>
+            <option value="">Test</option>
+            <option value="">Test</option>
+            <option value="">Test</option>
+            <option value="">Test</option>
+         </select>
+      </div>
+      <div class="item-count">
+         <button (click)="count = count - 1">-</button>
+         {{count}}
+         <button (click)="count = count + 1">+</button>
+      </div>
+      <button class="add-to-cart">Add to Cart</button>
+   </div>
+</div>

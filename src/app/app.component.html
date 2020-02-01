@@ -5,8 +5,8 @@
     </div>
   </a>
   <ul>
-    <li><a routerLink="">HOME</a></li>
-    <li><a routerLink="">ABOUT</a></li>
+    <li><a routerLink="" (click)="closeNav()">HOME</a></li>
+    <li><a routerLink="" (click)="closeNav()">ABOUT</a></li>
     <li class="desktop">
       <a routerLink="">
         <div class="logo">
@@ -17,8 +17,8 @@
     <li (mouseover)="toggleShopDrawerDesktop($event)" (mouseout)="toggleShopDrawerDesktop($event)">
       <a (click)="toggleShopDrawerMobile()">SHOP</a>
       <ul class="shop-drawer" [class.openDesktop]="openShopDrawerDesktop" [class.openMobile]="openShopDrawerMobile">
-        <li><a routerLink="shop/iphone-case">iPhone Case</a></li>
-        <li><a routerLink="shop/Macbook Skins">Macbook Skins</a></li>
+        <li><a routerLink="shop/iphone-case" (click)="closeNav()">iPhone Case</a></li>
+        <li><a routerLink="shop/macbook-skins" (click)="closeNav()">Macbook Skins</a></li>
       </ul>
     </li>
     <li><a routerLink="">CONTACT</a></li>
@@ -64,7 +64,9 @@
     <path id="Path_1324" data-name="Path 1324" d="M0,0H24V24H0Z" fill="none" />
   </svg>
 </div>
-<router-outlet></router-outlet>
+<main>
+  <router-outlet></router-outlet>
+</main>
 <footer>
   <div>
     <p class="header">details</p>
