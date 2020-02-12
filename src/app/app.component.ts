@@ -11,6 +11,8 @@ export class AppComponent {
   openShopDrawerDesktop = false
   openShopDrawerMobile = false
 
+  cartItems = localStorage.length
+
   toggleNav() {
     this.openNav = !this.openNav
     document.body.classList.toggle('hide-overflow')
@@ -22,12 +24,10 @@ export class AppComponent {
   }
 
   toggleShopDrawerDesktop($event) {
-    console.log($event.type)
     this.openShopDrawerDesktop = $event.type == 'mouseover';
   }
 
   toggleShopDrawerMobile() {
-    console.log('click')
     this.openShopDrawerMobile = !this.openShopDrawerMobile;
   }
 

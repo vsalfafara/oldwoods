@@ -4,36 +4,58 @@
       <p class="category">Macbook Wood Skin</p>
       <p class="price">PHP 3,500</p>
    </div>
-   <div class="product-image">
-      <img src="../../../assets/images/{{woodType}}" alt="">
+   <div class="carousel">
+      <button>
+         <img src="../../../assets/icons/baseline-keyboard_arrow_left-24px.svg" (click)="left()" alt="">
+      </button>
+      <div class="product-image">
+         <img src="../../../assets/images/{{getProduct()}}" alt="">
+      </div>
+      <button>
+         <img src="../../../assets/icons/baseline-keyboard_arrow_right-24px.svg" (click)="right()" alt="">
+      </button>
    </div>
    <div class="menu">
       <div class="wood-type">
          <p>Wood Type</p>
          <div class="types">
             <div class="form-control">
-               <input type="radio" name="type" (click)="changeWoodType('product-1.png')">
+               <input type="radio" name="type" (click)="changeWoodType('wood')">
                <img src="../../../assets/icons/wood-type-1.svg" alt="">
             </div>
-            <div class="form-control">
-               <input type="radio" name="type" (click)="changeWoodType('product-3.png')">
+            <!-- <div class="form-control">
+               <input type="radio" name="type" (click)="changeWoodType('spruce')">
                <img src="../../../assets/icons/wood-type-2.svg" alt="">
-            </div>
+            </div> -->
          </div>
       </div>
-      <div class="model">
-         <select>
-            <option value="">Test</option>
-            <option value="">Test</option>
-            <option value="">Test</option>
-            <option value="">Test</option>
+      <div class="model" *ngIf="productsDropdown">
+         <select (change)="changed($event.target.value)">
+            <option *ngFor="let product of productsDropdown" [value]="stringify(product)">{{product.product_name}}
+            </option>
          </select>
       </div>
+      <a (click)="showTypes()">Don’t know your macbook model?</a>
       <div class="item-count">
-         <button (click)="count = count - 1">-</button>
+         <button (click)="down()">
+            <img src="../../../assets/icons/baseline-remove_circle_outline-24px.svg" alt="">
+         </button>
          {{count}}
-         <button (click)="count = count + 1">+</button>
+         <button (click)="up()">
+            <img src="../../../assets/icons/baseline-add_circle_outline-24px.svg" alt="">
+         </button>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-cart" (click)="addToCart()">Add to Cart</button>
    </div>
 </div>
+<div class="typesImage" [class.show]="showTypeStatus" (click)="showTypes()">
+   <div class="image">
+      <!-- <button (click)="showTypes()">
+         <img src="../../../assets/icons/outline-cancel-24px.svg" alt="">
+      </button> -->
+      <img src="../../../assets/images/types.png" alt="">
+   </div>
+</div>
+<span class="snackbar" [class.show]="showSnackbar">
+   {{snackbarMessage}}
+</span>

@@ -1,0 +1,85 @@
+<div class="container">
+   <div class="cart-mobile">
+      <h1>Your Cart</h1>
+      <div class="list" *ngIf="products">
+         <div class="product" *ngFor="let product of products; let i = index">
+            <div class="row">
+               <div class="image">
+                  <img src="../../assets/images/mb-w-1.png" alt="">
+               </div>
+               <div class="details">
+                  <h2>{{product.type}}</h2>
+                  <p>{{product.category}}</p>
+                  <p>{{product.product_name}}</p>
+                  <h2 class="price">{{product.price}}</h2>
+               </div>
+               <button (click)="remove(i, product.product_id)">
+                  <img src="../../assets/icons/ic_close_24px.svg" alt="">
+               </button>
+            </div>
+            <div class="item-count">
+               <button (click)="down(i)">
+                  <img src="../../../assets/icons/baseline-remove_circle_outline-24px.svg" alt="">
+               </button>
+               <span>{{counts[i]}}</span>
+               <button (click)="up(i)">
+                  <img src="../../../assets/icons/baseline-add_circle_outline-24px.svg" alt="">
+               </button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="cart-desktop">
+      <h1>Your Cart</h1>
+      <div class="table" *ngIf="products">
+         <div class="tr">
+            <div class="td first">PRODUCT</div>
+            <div class="td">PRICE</div>
+            <div class="td">QTY</div>
+            <div class="td">TOTAL</div>
+            <div class="td"></div>
+         </div>
+         <div class="tr" *ngFor="let product of products; let i = index">
+            <div class="td first">
+               <div class="image">
+                  <img src="../../assets/images/mb-w-1.png" alt="">
+               </div>
+               <div class="details">
+                  <h2>{{product.type}}</h2>
+                  <p>{{product.category}}</p>
+                  <p>{{product.product_name}}</p>
+               </div>
+            </div>
+            <div class="td">
+               <h3>PHP {{product.price}}</h3>
+            </div>
+            <div class="td">
+               <div class="item-count">
+                  <button (click)="down(i)">
+                     <img src="../../../assets/icons/baseline-remove_circle_outline-24px.svg" alt="">
+                  </button>
+                  <span>{{counts[i]}}</span>
+                  <button (click)="up(i)">
+                     <img src="../../../assets/icons/baseline-add_circle_outline-24px.svg" alt="">
+                  </button>
+               </div>
+            </div>
+            <div class="td">
+               <h3>PHP {{individualPrice[i]}}</h3>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="summary">
+      <h1>SUMMARY</h1>
+      <div class="subtotal">
+         <h3>SUBTOTAL</h3>
+         <h3>PHP {{total}}</h3>
+      </div>
+      <p>Taxes and shipping are calculated at checkout</p>
+      <div class="action">
+         <button class="cancel">Cancel</button>
+         <button class="checkout">Check Out</button>
+      </div>
+   </div>
+</div>

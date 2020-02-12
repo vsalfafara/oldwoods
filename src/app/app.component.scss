@@ -77,6 +77,26 @@ nav {
 
    .icons {
       margin-top: auto;
+      position: relative;
+
+      a {
+         text-decoration: none;
+
+         span {
+            position: absolute;
+            top: .5em;
+            right: 2em;
+            color: #fff;
+            background-color: #908779;
+            height: 15px;
+            width: 15px;
+            text-align: center;
+            line-height: 1;
+            padding: .2em;
+            border-radius: 5px;
+         }
+      }
+
 
       .icon {
          &:hover svg {
@@ -204,6 +224,15 @@ footer {
          position: absolute;
          padding-right: inherit;
          right: 0;
+
+         a {
+            position: relative;
+
+            span {
+               top: 0;
+               right: 0;
+            }
+         }
 
          .icon {
             padding: .5em;

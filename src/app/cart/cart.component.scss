@@ -1,0 +1,220 @@
+.cart-mobile {
+
+   .list {
+      border-top: 1px solid #707070;
+      border-bottom: 1px solid #707070;
+      padding: 1em 0;
+
+      .product {
+         padding: 1em 0;
+
+         .row {
+            display: flex;
+
+            .image {
+               width: 100px;
+               height: 100px;
+
+               img {
+                  width: 100%;
+                  height: auto;
+               }
+            }
+
+            .details {
+               margin-left: 1em;
+
+               h2 {
+                  font-size: 1.2em;
+
+                  &.price {
+                     margin-top: .5em;
+                  }
+               }
+
+               p {
+                  font-size: .7em;
+               }
+
+               h2,
+               p {
+                  margin: .5px;
+               }
+            }
+
+            button {
+               margin-left: auto;
+               margin-right: 2.5em;
+               margin-bottom: auto;
+            }
+         }
+
+         .item-count {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            button {
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               font-weight: bold;
+               height: 30px;
+               width: 30px;
+               padding: 0;
+               margin: 0 2em;
+            }
+         }
+      }
+   }
+}
+
+.cart-desktop {
+   display: none;
+}
+
+.summary {
+   background-color: #EEEFF1;
+   padding: 1em 0 0;
+   margin-top: 2em;
+
+   h1 {
+      padding: 0 1em;
+   }
+
+   .subtotal {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2em;
+   }
+
+   p {
+      margin: 0;
+      padding: 0 2em;
+   }
+
+   .action {
+      margin-top: 3em;
+      display: flex;
+
+      button {
+         width: 50%;
+         padding: 1em;
+         border: 1px solid #C18A5E;
+
+         &.cancel {
+            color: #C18A5E;
+         }
+
+         &.checkout {
+            background-color: #C18A5E;
+            color: #EEEFF1;
+         }
+      }
+   }
+}
+
+@media screen and (min-width: 768px) {
+   .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+   }
+}
+
+@media screen and (min-width: 1024px) {
+
+   .cart-mobile {
+      display: none;
+   }
+
+   .cart-desktop {
+      display: block;
+      flex: 1;
+      padding: 0 1em;
+
+      .table {
+         display: table;
+         align-items: center;
+         text-align: center;
+         width: 100%;
+
+         .tr {
+            display: table-row;
+            vertical-align: middle;
+
+            .td {
+               display: table-cell;
+               padding: 1em;
+               vertical-align: middle;
+
+               &.first {
+                  display: grid;
+                  grid-template-columns: auto 1fr;
+                  grid-template-rows: auto;
+                  align-items: center;
+                  text-align: left;
+
+                  .image {
+                     width: 100px;
+                     height: 100px;
+
+                     img {
+                        width: 100%;
+                        height: auto;
+                     }
+                  }
+
+                  .details {
+                     margin-left: 1em;
+
+                     h2 {
+                        font-size: 1.2em;
+                     }
+
+                     p {
+                        font-size: .7em;
+                     }
+
+                     h2,
+                     p {
+                        margin: .5px;
+                     }
+                  }
+               }
+            }
+
+            &:first-child .td {
+               border-bottom: 1px solid #dbdbdb;
+            }
+
+            &:last-child .td {
+               border-bottom: 1px solid #dbdbdb;
+            }
+
+            .item-count {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+
+               button {
+                  height: 30px;
+                  width: 30px;
+                  padding: 0;
+                  margin: 0 1em;
+               }
+            }
+         }
+
+         .border {
+            border: 1px solid #707070;
+         }
+      }
+   }
+}
+
+@media screen and (min-width: 1200px) {
+   .container {
+      padding: 0 7em;
+   }
+}
