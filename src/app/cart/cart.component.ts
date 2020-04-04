@@ -110,33 +110,34 @@ export class CartComponent implements OnInit {
   }
 
   checkInformation() {
-    // if (this.information.valid) 
+    if (this.information.valid) 
       this.changePanel(3)
   }
 
   checkPaymentMethod() {
-    // if (this.payment.valid)
+    if (this.payment.valid)
       this.confirm()
   }
 
   confirm() {
-    // let form = {
-    //   items: [
-    //     ...this.products
-    //   ],
-    //   transaction: {
-    //     ...this.information.value, 
-    //     ...this.payment.value, 
-    //     total_price: this.subtotal, 
-    //     shipping_fee: this.shipping,
-    //     shipping_id: this.provinces.find(province => province.province_code = this.information.get('delivery_province').value).shipping_id
-    //   }
-    // }
+    let form = {
+      items: [
+        ...this.products
+      ],
+      transaction: {
+        ...this.information.value, 
+        ...this.payment.value, 
+        total_price: this.subtotal, 
+        shipping_fee: this.shipping,
+        shipping_id: this.provinces.find(province => province.province_code = this.information.get('delivery_province').value).shipping_id
+      }
+    }
 
-    this.showConfirmationStatus = true;
-    // this.transaction.confirm(form)
-    // .subscribe(data => {
-    //   console.log(data);
-    // })
+    this.transaction.confirm(form)
+    .subscribe(data => {
+      this.showConfirmationStatus = true
+      localStorage.clear()
+      console.log(data)
+    })
   }
 }
