@@ -1,8 +1,8 @@
 <div class="container">
-   <div class="cart-mobile">
+   <div class="cart-mobile" *ngIf="checkPanel() == 1">
       <h1>Your Cart</h1>
       <div class="list" *ngIf="products">
-         <div class="product" *ngFor="let product of products; let i = index">
+         <div class="product" *ngFor="let product of products">
             <div class="row">
                <div class="image">
                   <img src="../../assets/images/mb-w-1.png" alt="">
@@ -13,23 +13,23 @@
                   <p>{{product.product_name}}</p>
                   <h2 class="price">{{product.price}}</h2>
                </div>
-               <button (click)="remove(i, product.product_id)">
+               <button (click)="remove(product)">
                   <img src="../../assets/icons/ic_close_24px.svg" alt="">
                </button>
             </div>
-            <div class="item-count">
-               <button (click)="down(i)">
+            <div class="item-quantity">
+               <button (click)="down(product)">
                   <img src="../../../assets/icons/baseline-remove_circle_outline-24px.svg" alt="">
                </button>
-               <span>{{counts[i]}}</span>
-               <button (click)="up(i)">
+               <span>{{product.quantity}}</span>
+               <button (click)="up(product)">
                   <img src="../../../assets/icons/baseline-add_circle_outline-24px.svg" alt="">
                </button>
             </div>
          </div>
       </div>
    </div>
-   <div class="cart-desktop">
+   <div class="cart-desktop" *ngIf="checkPanel() == 1">
       <h1>Your Cart</h1>
       <div class="table" *ngIf="products">
          <div class="tr">
@@ -39,7 +39,7 @@
             <div class="td">TOTAL</div>
             <div class="td"></div>
          </div>
-         <div class="tr" *ngFor="let product of products; let i = index">
+         <div class="tr" *ngFor="let product of products">
             <div class="td first">
                <div class="image">
                   <img src="../../assets/images/mb-w-1.png" alt="">
@@ -51,35 +51,264 @@
                </div>
             </div>
             <div class="td">
-               <h3>PHP {{product.price}}</h3>
+               <h3>PHP {{product.original_price}}</h3>
             </div>
             <div class="td">
-               <div class="item-count">
-                  <button (click)="down(i)">
+               <div class="item-quantity">
+                  <button (click)="down(product)">
                      <img src="../../../assets/icons/baseline-remove_circle_outline-24px.svg" alt="">
                   </button>
-                  <span>{{counts[i]}}</span>
-                  <button (click)="up(i)">
+                  <span>{{product.quantity}}</span>
+                  <button (click)="up(product)">
                      <img src="../../../assets/icons/baseline-add_circle_outline-24px.svg" alt="">
                   </button>
                </div>
             </div>
             <div class="td">
-               <h3>PHP {{individualPrice[i]}}</h3>
+               <h3>PHP {{product.price}}</h3>
             </div>
          </div>
       </div>
    </div>
-   <div class="summary">
+   <div class="summary" *ngIf="checkPanel() == 1">
       <h1>SUMMARY</h1>
-      <div class="subtotal">
+      <div class="summary-item">
          <h3>SUBTOTAL</h3>
-         <h3>PHP {{total}}</h3>
+         <h3>PHP {{subtotal}}</h3>
       </div>
       <p>Taxes and shipping are calculated at checkout</p>
       <div class="action">
          <button class="cancel">Cancel</button>
-         <button class="checkout">Check Out</button>
+         <button class="checkout" (click)="changePanel(2)">Check Out</button>
+      </div>
+   </div>
+   <div class="cart-mobile information" *ngIf="checkPanel() == 2">
+      <h1>Your Cart</h1>
+      <div class="flex">
+         <img src="../../../assets/icons/baseline-keyboard_arrow_right-24px.svg" alt="">
+         <p>INFORMATION</p>
+      </div>
+      <form [formGroup]="information">
+         <p>Please input the details below</p>
+         <input type="text" placeholder="First Name" formControlName="first_name">
+         <small *ngIf="information.get('first_name').touched && information.get('first_name').errors">First Name is required!</small>
+         <input type="text" placeholder="Last Name" formControlName="last_name">
+         <small *ngIf="information.get('last_name').touched && information.get('last_name').errors">Last Name is required!</small>
+         <input type="text" placeholder="Mobile Number" formControlName="mobile_number">
+         <small *ngIf="information.get('mobile_number').touched && information.get('mobile_number').errors">Mobile Number is required!</small>
+         <input type="email" placeholder="Email Address" formControlName="email">
+         <small *ngIf="information.get('email').touched && information.get('email').errors?.email">Email Address should be valid!</small>
+         <small *ngIf="information.get('email').touched && information.get('email').errors?.required">Email Address is required!</small>
+         <input type="text" placeholder="Delivery Address" formControlName="delivery_address">
+         <small *ngIf="information.get('delivery_address').touched && information.get('delivery_address').errors">Delivery Address is required!</small>
+         <select name="" id="" *ngIf="provinces" formControlName="delivery_province">
+            <option value="" disabled>Select Province</option>
+            <option *ngFor="let province of provinces" [value]="province.province_code">{{province.province_code}}</option>
+         </select>
+      </form>
+   </div>
+   <div class="cart-desktop information" *ngIf="checkPanel() == 2">
+      <div class="flex">
+         <h1>Your Cart</h1>
+         <img src="../../../assets/icons/baseline-keyboard_arrow_right-24px.svg" alt="">
+         <p>INFORMATION</p>
+      </div>
+      <form [formGroup]="information">
+         <p>Please input the details below</p>
+         <div class="row">
+            <div class="col">
+               <input type="text" placeholder="First Name" formControlName="first_name">
+               <small *ngIf="information.get('first_name').touched && information.get('first_name').errors">First Name is required!</small>
+            </div>
+            <div class="col">
+               <input type="text" placeholder="Last Name" formControlName="last_name">
+               <small *ngIf="information.get('last_name').touched && information.get('last_name').errors">Last Name is required!</small>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col">
+               <input type="text" placeholder="Mobile Number" formControlName="mobile_number">
+               <small *ngIf="information.get('mobile_number').touched && information.get('mobile_number').errors">Mobile Number is required!</small>
+            </div>
+            <div class="col">
+               <input type="email" placeholder="Email Address" formControlName="email">
+               <small *ngIf="information.get('email').touched && information.get('email').errors?.email">Email Address should be valid!</small>
+               <small *ngIf="information.get('email').touched && information.get('email').errors?.required">Email Address is required!</small>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col">
+               <input type="text" placeholder="Delivery Address" formControlName="delivery_address">
+               <small *ngIf="information.get('delivery_address').touched && information.get('delivery_address').errors">Delivery Address is required!</small>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col">
+               <select name="" id="" *ngIf="provinces" formControlName="delivery_province">
+                  <option value="" disabled>Select Province</option>
+                  <option *ngFor="let province of provinces" [value]="province.province_code">{{province.province_code}}</option>
+               </select>
+            </div>
+         </div>
+      </form>
+   </div>
+   <div class="summary" *ngIf="checkPanel() == 2">
+      <h1>SUMMARY</h1>
+      <div class="summary-item">
+         <h3>SUBTOTAL</h3>
+         <h3>PHP {{subtotal}}</h3>
+      </div>
+      <div class="summary-item">
+         <h3>SHIPPING</h3>
+         <h3>PHP {{shipping}}</h3>
+      </div>
+      <div class="divide"></div>
+      <div class="summary-item">
+         <h3>TOTAL</h3>
+         <h3>PHP {{total}}</h3>
+      </div>
+      <p>Taxes and shipping are calculated at checkout</p>
+      <div class="action">
+         <button class="cancel" (click)="changePanel(1)">Back</button>
+         <button class="checkout" (click)="checkInformation()">Proceed to Payment</button>
+      </div>
+   </div>
+   <div class="cart-mobile information" *ngIf="checkPanel() == 3">
+      <h1>Your Cart</h1>
+      <div class="flex">
+         <img src="../../../assets/icons/baseline-keyboard_arrow_right-24px.svg" alt="">
+         <p>INFORMATION</p>
+         <img src="../../../assets/icons/baseline-keyboard_arrow_right-24px.svg" alt="">
+         <p>PAYMENT</p>
+      </div>
+      <form [formGroup]="payment">
+         <p>Please choose a payment method. Instructions will be emailed upon confirmation</p>
+         <label>
+            <input type="radio" value="BDO" formControlName="mode_of_payment">
+            <div class="radio-box"></div>
+            <p>Bank Transfer (BDO)</p>
+         </label>
+         <label>
+            <input type="radio" value="BPI" formControlName="mode_of_payment">
+            <div class="radio-box"></div>
+            <p>Bank Transfer (BPI)</p>
+         </label>
+         <label class="disabled">
+            <input type="radio" value="credit"formControlName="mode_of_payment" disabled>
+            <div class="radio-box"></div>
+            <p>Credit Card</p>
+         </label>
+         <label class="disabled">
+            <input type="radio" value="gcash"formControlName="mode_of_payment" disabled>
+            <div class="radio-box"></div>
+            <p>GCash</p>
+         </label>
+      </form>
+   </div>
+   <div class="cart-desktop information" *ngIf="checkPanel() == 3">
+      <div class="flex">
+         <h1>Your Cart</h1>
+         <img src="../../../assets/icons/baseline-keyboard_arrow_right-24px.svg" alt="">
+         <p>INFORMATION</p>
+         <img src="../../../assets/icons/baseline-keyboard_arrow_right-24px.svg" alt="">
+         <p>PAYMENT</p>
+      </div>
+      <form [formGroup]="payment">
+         <p>Please choose a payment method. Instructions will be emailed upon confirmation</p>
+         <label>
+            <input type="radio" value="BDO" formControlName="mode_of_payment">
+            <div class="radio-box"></div>
+            <p>Bank Transfer (BDO)</p>
+         </label>
+         <label>
+            <input type="radio" value="BPI" formControlName="mode_of_payment">
+            <div class="radio-box"></div>
+            <p>Bank Transfer (BPI)</p>
+         </label>
+         <label class="disabled">
+            <input type="radio" value="credit"formControlName="mode_of_payment" disabled>
+            <div class="radio-box"></div>
+            <p>Credit Card</p>
+         </label>
+         <label class="disabled">
+            <input type="radio" value="gcash"formControlName="mode_of_payment" disabled>
+            <div class="radio-box"></div>
+            <p>GCash</p>
+         </label>
+      </form>
+   </div>
+   <div class="summary" *ngIf="checkPanel() == 3">
+      <h1>SUMMARY</h1>
+      <div class="summary-info no-border-bottom">
+         <h4>NAME</h4>
+         <h4>{{information.get('first_name').value + ' ' + information.get('last_name').value | uppercase}}</h4>
+      </div>
+      <div class="summary-info margin-bottom">
+         <h4>SHIPPING TO</h4>
+         <h4>{{information.get('delivery_address').value + ', ' + information.get('delivery_province').value | uppercase}}</h4>
+      </div>
+      <div class="summary-item">
+         <h3>SUBTOTAL</h3>
+         <h3>PHP {{subtotal}}</h3>
+      </div>
+      <div class="summary-item">
+         <h3>SHIPPING</h3>
+         <h3>PHP {{shipping}}</h3>
+      </div>
+      <div class="divide"></div>
+      <div class="summary-item">
+         <h3>TOTAL</h3>
+         <h3>PHP {{total}}</h3>
+      </div>
+      <p>Taxes and shipping are calculated at checkout</p>
+      <div class="action">
+         <button class="cancel" (click)="changePanel(2)">Back</button>
+         <button class="checkout" (click)="checkPaymentMethod()">Confirm</button>
+      </div>
+   </div>
+   <div class="confirmation" [class.show]="showConfirmationStatus" (click)="showConfirmationStatus = false">
+      <div class="summary">
+         <h1>SUMMARY</h1>
+         <P>Your order has been confirmed. To complete the process please check your email ({{information.get('email').value}}) for payment steps and confirmation.</P>
+            
+         <div class="summary-info no-border-bottom">
+            <h4>NAME</h4>
+            <h4>{{information.get('first_name').value + ' ' + information.get('last_name').value | uppercase}}</h4>
+         </div>
+         <div class="summary-info no-border-bottom">
+            <h4>SHIPPING TO</h4>
+            <h4>{{information.get('delivery_address').value + ', ' + information.get('delivery_province').value | uppercase}}</h4>
+         </div>
+         <div class="summary-info">
+            <h4>PAYMENT</h4>
+            <h4>{{payment.get('mode_of_payment').value | uppercase}}</h4>
+         </div>
+         <div class="summary-product" *ngFor="let product of products">
+            <h2>{{product.quantity}}</h2>
+            <div class="details">
+               <h2>{{product.type}}</h2>
+               <p>{{product.category}}</p>
+               <p>{{product.product_name}}</p>
+            </div>
+            <h2 class="price">{{product.price}}</h2>
+         </div>
+         <div class="divide"></div>
+         <div class="summary-item">
+            <h3>SUBTOTAL</h3>
+            <h3>PHP {{subtotal}}</h3>
+         </div>
+         <div class="summary-item">
+            <h3>SHIPPING</h3>
+            <h3>PHP {{shipping}}</h3>
+         </div>
+         <div class="divide"></div>
+         <div class="summary-item">
+            <h3>TOTAL</h3>
+            <h3>PHP {{total}}</h3>
+         </div>
+         <div class="action">
+            <button class="checkout" (click)="showConfirmationStatus = false">OKAY</button>
+         </div>
       </div>
    </div>
 </div>
