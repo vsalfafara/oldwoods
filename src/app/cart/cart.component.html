@@ -67,6 +67,13 @@
             <div class="td">
                <h3>PHP {{product.price}}</h3>
             </div>
+            <div class="td">
+               <h3>
+                  <button (click)="remove(product)">
+                     <img src="../../assets/icons/ic_close_24px.svg" alt="">
+                  </button>
+               </h3>
+            </div>
          </div>
       </div>
    </div>
@@ -307,7 +314,7 @@
             <h3>PHP {{total}}</h3>
          </div>
          <div class="action">
-            <button class="checkout" (click)="showConfirmationStatus = false">OKAY</button>
+            <button class="checkout" (click)="refresh()">OKAY</button>
          </div>
       </div>
    </div>

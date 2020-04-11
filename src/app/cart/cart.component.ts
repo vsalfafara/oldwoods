@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsService } from '../services/forms/forms.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TransactionService } from '../services/transaction/transaction.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -20,17 +21,17 @@ export class CartComponent implements OnInit {
   payment: any
   showConfirmationStatus = false;
   
-  constructor(private forms: FormsService, private builder: FormBuilder, private transaction: TransactionService) { }
+  constructor(private forms: FormsService, private builder: FormBuilder, private transaction: TransactionService, private router: Router) { }
 
   ngOnInit() {
     this.products = Object.values(localStorage).map(data => {
       data = JSON.parse(data)
-      data.quantity = 1
       data.original_price = data.price
       return data
     })
 
-    this.getSubTotal()
+    this.products.forEach(product => this.changePrice(product))
+
     let hasMac = false;
     let hasiPhone = false;
 
@@ -60,7 +61,7 @@ export class CartComponent implements OnInit {
       mode_of_payment: ['', Validators.required]
     })
 
-    this.forms.getProvinces(hasMac && hasiPhone ? 'LARGE' : 'SMALL')
+    this.forms.getProvinces(hasMac || (hasMac && hasiPhone) ? 'LARGE' : 'SMALL')
     .subscribe(data => {
       this.provinces = data
     })
@@ -137,7 +138,13 @@ export class CartComponent implements OnInit {
     .subscribe(data => {
       this.showConfirmationStatus = true
       localStorage.clear()
-      console.log(data)
     })
+  }
+
+  refresh() {
+    this.router.navigate([''])
+    .then(() => {
+      window.location.reload();
+    });
   }
 }

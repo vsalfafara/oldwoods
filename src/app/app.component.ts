@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TransactionService } from './services/transaction/transaction.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,11 @@ export class AppComponent {
   openShopDrawerDesktop = false
   openShopDrawerMobile = false
 
-  cartItems = localStorage.length
+  constructor(private transaction: TransactionService) {}
+
+  getCount() {
+    return this.transaction.getCartItemCount()
+  }
 
   toggleNav() {
     this.openNav = !this.openNav

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MacbookService } from 'src/app/services/shop/macbook/macbook.service';
 import { Router } from '@angular/router';
+import { TransactionService } from 'src/app/services/transaction/transaction.service';
 
 @Component({
   selector: 'app-macbook',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MacbookComponent implements OnInit {
 
-  count = 1
+  quantity = 1
   showSnackbar = false
   showTypeStatus = false;
   woodType = 'wood'
@@ -30,7 +31,7 @@ export class MacbookComponent implements OnInit {
 
   constructor(
     private macbbooks: MacbookService,
-    private router: Router
+    private transaction: TransactionService
   ) { }
 
   ngOnInit() {
@@ -46,29 +47,27 @@ export class MacbookComponent implements OnInit {
   }
 
   left() {
-    if (!(typeof this.products[this.woodType][this.productCycle - 1] === 'undefined')) {
-
+    if (this.productCycle == 0)
+      this.productCycle = this.products[this.woodType].length - 1;
+    else
       this.productCycle--;
-      console.log(this.productCycle)
-    }
   }
 
   right() {
-    if (!(typeof this.products[this.woodType][this.productCycle + 1] === 'undefined')) {
-
+    if (this.products[this.woodType].length - 1 == this.productCycle)
+      this.productCycle = 0;
+    else
       this.productCycle++;
-      console.log(this.productCycle)
-    }
   }
 
   up() {
-    this.count++
+    this.quantity++
 
   }
 
   down() {
-    if (!(this.count == 1))
-      this.count--
+    if (!(this.quantity == 1))
+      this.quantity--
   }
 
   changeWoodType(type) {
@@ -93,17 +92,17 @@ export class MacbookComponent implements OnInit {
   }
 
   addToCart() {
-    let total = this.choice.price * this.count
+    this.choice.quantity = this.quantity
+    
     if (localStorage.getItem(this.choice.product_id))
       this.snackbarMessage = 'Already in Cart'
     else
-      localStorage.setItem(this.choice.product_id, this.stringify(this.choice))
+      this.transaction.setCartItems(this.choice.product_id, this.stringify(this.choice))
 
     this.showSnackbar = true;
     let component = this
     setTimeout(() => {
       component.showSnackbar = false
-      console.log('g');
     }, 5000)
   }
 }

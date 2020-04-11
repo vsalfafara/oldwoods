@@ -45,7 +45,7 @@
             transform="translate(45 677)" fill="#707070" />
         </g>
       </svg>
-      <span *ngIf="cartItems">{{cartItems}}</span>
+      <span *ngIf="getCount()">{{getCount()}}</span>
     </a>
     <a routerLink="profile" class="icon" (click)="closeNav()">
       <svg id="baseline-perm_identity-24px" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
