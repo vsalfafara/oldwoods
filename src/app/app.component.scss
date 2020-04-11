@@ -87,7 +87,7 @@ nav {
             top: .5em;
             right: 2em;
             color: #fff;
-            background-color: #908779;
+            background-color: #707070;
             height: 15px;
             width: 15px;
             text-align: center;
@@ -97,10 +97,15 @@ nav {
          }
       }
 
-
       .icon {
-         &:hover svg {
-            filter: sepia(100%) saturate(50%);
+
+         &:hover {
+            span {
+               background-color: #C18A5E;
+            }
+            #Path_3252, #Group_316 *, #Path_381  {
+               fill: #C18A5E;
+            }
          }
       }
 
@@ -109,7 +114,6 @@ nav {
          margin: auto;
          padding: 1em 0;
          transition: filter .2s;
-
       }
    }
 }

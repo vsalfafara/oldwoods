@@ -30,6 +30,7 @@
          </div>
       </div>
       <div class="model" *ngIf="productsDropdown">
+         <p>Model</p>
          <select (change)="changed($event.target.value)">
             <option *ngFor="let product of productsDropdown" [value]="stringify(product)">{{product.product_name}}
             </option>

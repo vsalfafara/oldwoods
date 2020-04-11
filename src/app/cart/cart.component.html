@@ -51,7 +51,7 @@
                </div>
             </div>
             <div class="td">
-               <h3>PHP {{product.original_price}}</h3>
+               <p>PHP {{product.original_price}}</p>
             </div>
             <div class="td">
                <div class="item-quantity">
@@ -65,25 +65,23 @@
                </div>
             </div>
             <div class="td">
-               <h3>PHP {{product.price}}</h3>
+               <p>PHP {{product.price}}</p>
             </div>
             <div class="td">
-               <h3>
-                  <button (click)="remove(product)">
-                     <img src="../../assets/icons/ic_close_24px.svg" alt="">
-                  </button>
-               </h3>
+               <button class="item-remove" (click)="remove(product)">
+                  <img src="../../assets/icons/ic_close_24px.svg" alt="">
+               </button>
             </div>
          </div>
       </div>
    </div>
    <div class="summary" *ngIf="checkPanel() == 1">
-      <h1>SUMMARY</h1>
+      <p class="summary-title">SUMMARY</p>
       <div class="summary-item">
-         <h3>SUBTOTAL</h3>
-         <h3>PHP {{subtotal}}</h3>
+         <p>SUBTOTAL</p>
+         <p>PHP {{subtotal}}</p>
       </div>
-      <p>Taxes and shipping are calculated at checkout</p>
+      <p class="taxes">Taxes and shipping are calculated at checkout</p>
       <div class="action">
          <button class="cancel">Cancel</button>
          <button class="checkout" (click)="changePanel(2)">Check Out</button>
@@ -160,21 +158,20 @@
       </form>
    </div>
    <div class="summary" *ngIf="checkPanel() == 2">
-      <h1>SUMMARY</h1>
+      <p class="summary-title">SUMMARY</p>
       <div class="summary-item">
-         <h3>SUBTOTAL</h3>
-         <h3>PHP {{subtotal}}</h3>
+         <p>SUBTOTAL</p>
+         <p>PHP {{subtotal}}</p>
       </div>
       <div class="summary-item">
-         <h3>SHIPPING</h3>
-         <h3>PHP {{shipping}}</h3>
+         <p>SHIPPING</p>
+         <p>PHP {{shipping}}</p>
       </div>
       <div class="divide"></div>
       <div class="summary-item">
-         <h3>TOTAL</h3>
-         <h3>PHP {{total}}</h3>
+         <p>TOTAL</p>
+         <p>PHP {{total}}</p>
       </div>
-      <p>Taxes and shipping are calculated at checkout</p>
       <div class="action">
          <button class="cancel" (click)="changePanel(1)">Back</button>
          <button class="checkout" (click)="checkInformation()">Proceed to Payment</button>
@@ -245,27 +242,25 @@
       </form>
    </div>
    <div class="summary" *ngIf="checkPanel() == 3">
-      <h1>SUMMARY</h1>
+      <p class="summary-title">SUMMARY</p>
       <div class="summary-info no-border-bottom">
-         <h4>NAME</h4>
-         <h4>{{information.get('first_name').value + ' ' + information.get('last_name').value | uppercase}}</h4>
+         <h4>NAME: {{information.get('first_name').value + ' ' + information.get('last_name').value | uppercase}}</h4>
       </div>
       <div class="summary-info margin-bottom">
-         <h4>SHIPPING TO</h4>
-         <h4>{{information.get('delivery_address').value + ', ' + information.get('delivery_province').value | uppercase}}</h4>
+         <h4>SHIPPING TO: {{information.get('delivery_address').value + ', ' + information.get('delivery_province').value | uppercase}}</h4>
       </div>
       <div class="summary-item">
-         <h3>SUBTOTAL</h3>
-         <h3>PHP {{subtotal}}</h3>
+         <p>SUBTOTAL</p>
+         <p>PHP {{subtotal}}</p>
       </div>
       <div class="summary-item">
-         <h3>SHIPPING</h3>
-         <h3>PHP {{shipping}}</h3>
+         <p>SHIPPING</p>
+         <p>PHP {{shipping}}</p>
       </div>
       <div class="divide"></div>
       <div class="summary-item">
-         <h3>TOTAL</h3>
-         <h3>PHP {{total}}</h3>
+         <p>TOTAL</p>
+         <p>PHP {{total}}</p>
       </div>
       <p>Taxes and shipping are calculated at checkout</p>
       <div class="action">

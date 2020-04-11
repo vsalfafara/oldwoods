@@ -160,8 +160,21 @@ small {
    padding: 1em 0 0;
    margin-top: 2em;
 
-   h1 {
+   h2 {
       padding: 0 1em;
+   }
+
+   .taxes {
+      font-size: 12px;
+   }
+
+   .summary-title {
+      font-size: 20px;
+   }
+
+   p {
+      padding: 0 2rem;
+      font-size: 18px;
    }
 
    .summary-info {
@@ -179,13 +192,7 @@ small {
       }
 
       h4 {
-         font-weight: lighter;
          margin: 0;
-         word-wrap: break-word;
-         &:first-child {
-            min-width: 100px;
-            margin-right: 1rem;
-         }
       }
    }
 
@@ -198,6 +205,11 @@ small {
       h3 {
          margin: .5em 0;
          font-weight: lighter;
+      }
+
+      p {
+         font-size: 16px;
+         padding: 0;
       }
    }
 
@@ -225,10 +237,6 @@ small {
       height: 1px;
       background-color: #707070;
       opacity: .7;
-   }
-
-   p {
-      padding: 0 2em;
    }
 
    .action {
@@ -282,7 +290,7 @@ small {
       margin: 0;
       padding: 2em;
 
-      > h1 {
+      > h3 {
          margin-top: 0;
       }
 
@@ -390,10 +398,23 @@ small {
                align-items: center;
 
                button {
-                  height: 30px;
-                  width: 30px;
+                  height: 20px;
+                  width: 20px;
                   padding: 0;
                   margin: 0 1em;
+
+                  img {
+                     height: 100%;
+                     width: 100%;
+                  }
+               }
+            }
+            .item-remove {
+               height: 15px;
+               width: 15px;
+               img {
+                  height: 100%;
+                  width: 100%;
                }
             }
          }
